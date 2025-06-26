@@ -1,0 +1,31 @@
+/* Maximum consecutive one’s (or zeros) in a binary array */
+
+public class Main
+{
+	public static void main(String[] args) {
+	    int[] arr= {0, 0, 1, 0, 1, 0};
+	    consecutiveCount(arr);
+	
+	}
+	public static void consecutiveCount(int[] arr){
+	    if(arr.length==0){
+	        return;
+	    }
+	    
+	    int maxCount=0;
+	    int count=1;
+	    
+	    for(int i=1; i<arr.length; i++){
+	        if(arr[i]==arr[i-1]){
+	            count++;
+	        }else{
+	            maxCount=Math.max(maxCount,count);
+	            count=1;
+	        }
+	    }
+	    int res = Math.max(maxCount, count);
+	    
+	   System.out.println(res);
+	   
+	}
+}
