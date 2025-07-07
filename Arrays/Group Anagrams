@@ -1,0 +1,23 @@
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+	    List<List<String>> res = new ArrayList<>();
+	    Map<String, List<String>> grouped = new HashMap<>();
+	    for (String word : strs) {
+            char[] chars = word.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+
+            if (grouped.containsKey(key)) {
+                grouped.get(key).add(word);
+            } else {
+            List<String> newList = new ArrayList<>();
+            newList.add(word);
+            grouped.put(key, newList);
+            }
+        }
+	    res = new ArrayList<>(grouped.values());
+	    return res;
+    }
+}
